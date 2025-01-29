@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario.css">
+    <title>formulario</title>
+</head>
+<body>
+    <h1>Criar 
+        <br>seu 
+        <br>cadastro:</h1>
+   
+    <br>
+
+    <form action="#" method="post"> 
+        <div>
+            <label for="nome">Nome completo</label> <br>
+            <input type="text" name="nome" id="nome" required>
+        </div>
+        <br>
+        <div>
+            <label for="genero">Gênero</label> <br>
+            <select name="genero" id="genero" required>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email</label> <br>
+            <input type="email"  name="email" id="email" required>
+        </div>
+        <br>
+        <div>
+            <label for="telefone">Telefone</label> <br>
+            <input type="tel" name="telefone" id="telefone" required> 
+        </div>
+        <br>
+            <div>
+                <label for="cpf">CPF</label> <br>
+                <input type="text" name="cpf" id="cpf" required>
+            </div>
+            <br>
+            <div>
+                <label for="data_nascimento">Data de Nascimento</label> <br>
+                <input type="date" name="data_nascimento" id="data_nascimento" required>
+                <br>
+                <br>
+                <div>
+                    <label for="senha">Senha</label> <br>
+                    <input type="password" name="senha" id="senha" required>
+                </div>
+                <br>
+                <div>
+                    <label for="confirmar_senha">Confirmar Senha</label> <br>
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" required>
+                </div>
+                <br>
+                <div>
+                    <label for="forca_senha">Força da Senha</label> <br>
+                    <meter id="forca_senha" min="0" max="6" value="0"></meter>
+                </div>
+                <script>
+                    const senha = document.getElementById('senha');
+                    const forcaSenha = document.getElementById('forca_senha');
+
+                    senha.addEventListener('input', () => {
+                        const valor = senha.value;
+                        let forca = 0;
+
+                        if (valor.length >= 8) forca++;
+                        if (/[A-Z]/.test(valor)) forca++;
+                        if (/[a-z]/.test(valor)) forca++;
+                        if (/[0-9]/.test(valor)) forca++;
+                        if (/[^A-Za-z0-9]/.test(valor)) forca++;
+
+                        forcaSenha.value = forca;
+                        
+                    });
+                </script>
+            </div>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
